@@ -17,13 +17,19 @@ class MainActivity : AppCompatActivity() {
                     "http://techslides.com/demos/sample-videos/small.mp4",
                     "http://rdmedia.bbc.co.uk/dash/ondemand/elephants_dream/1/client_manifest-all.mpd")
 
-    private var dashUrl = listOf("http://rdmedia.bbc.co.uk/dash/ondemand/elephants_dream/1/client_manifest-all.mpd")
+    private var mp4WithUrlsWithHls =
+            listOf("http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_2mb.mp4",
+                    "http://techslides.com/demos/sample-videos/small.mp4",
+                    "https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8")
+
+    private var dashUrl = listOf("https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         dashOnlyButton.setOnClickListener { startFragment(createPlayerFragment(dashUrl)) }
         dashAfterMp4Button.setOnClickListener { startFragment(createPlayerFragment(mp4WithUrlsWithDash)) }
+        hlsAfterMp4Button.setOnClickListener { startFragment(createPlayerFragment(mp4WithUrlsWithHls)) }
         mp4OnlyButton.setOnClickListener { startFragment(createPlayerFragment(mp4Urls)) }
     }
 
